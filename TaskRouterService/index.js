@@ -3,12 +3,15 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const connectToMongo = require('./src/db/mongo');
+const router = require('./src/routes/router.route');
 
 const app = express();
 const port = process.env.PORT;
 
 app.use(cors());
 app.use(express.json());
+
+app.use('/task_service', router);
 
 (async () => {
     try {
