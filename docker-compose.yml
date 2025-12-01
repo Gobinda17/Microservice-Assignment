@@ -20,3 +20,17 @@ services:
       - "5601:5601"
     depends_on:
       - elasticsearch
+
+  task-router: 
+    build: ./services/task-router
+    container: task-router
+    environment:
+      - PORT=3001
+      - SERVICE_NAME=task-router
+      - LOGGING_SERVICE_URL=http://logging-service:4000
+      - DELIVERY_SERVICE_URL=http://delivery-service:3002
+      - MONGODB_URI=mongodb://localhost:27017/comms_system
+    ports:
+      - "3001:3001"
+    depends_on:
+      - logging-service
