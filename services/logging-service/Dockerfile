@@ -1,4 +1,4 @@
-# services/TaskRouterService/Dockerfile
+# services/logging-service/Dockerfile
 FROM node:20-alpine
 
 WORKDIR /app
@@ -6,11 +6,11 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install --only=production
 
-COPY src ./src
+COPY . .
 
 ENV NODE_ENV=production
-ENV PORT=3001
+ENV PORT=4000
 
-EXPOSE 3001
+EXPOSE 4000
 
 CMD ["node", "index.js"]

@@ -19,41 +19,41 @@ services:
     depends_on:
       - elasticsearch
 
-  task-router:
-    build: ./services/TaskRouterService
-    container_name: task-router
+  task-router-service:
+    build: ./services/task-router-service
+    container_name: task-router-service
     environment:
       - PORT=3001
       - SERVICE_NAME=TaskRouterService
       - LOGGING_SERVICE_URL=http://logging-service:4000
       - DELIVERY_SERVICE_URL=http://delivery-service:3002
-      - MONGODB_URI=mongodb://localhost:27017/comms_system
+      - MONGODB_URI=mongodb://host.docker.internal:27017/comms_system
     ports:
       - "3001:3001"
     depends_on:
       - logging-service
 
   delivery-service:
-    build: ./services/DeliveryService
+    build: ./services/delivery-service
     container_name: delivery-service
     environment:
       - PORT=3002
       - SERVICE_NAME=DeliveryService
       - LOGGING_SERVICE_URL=http://logging-service:4000
-      - MONGODB_URI=mongodb://localhost:27017/comms_system
+      - MONGODB_URI=mongodb://host.docker.internal:27017/comms_system
     ports:
       - "3002:3002"
     depends_on:
       - logging-service
 
   logging-service:
-    build: ./services/LoggingService
+    build: ./services/logging-service
     container_name: logging-service
     environment:
       - PORT=4000
       - SERVICE_NAME=LoggingService
       - ELASTICSEARCH_URL=http://elasticsearch:9200
-      - MONGODB_URI=mongodb://localhost:27017/comms_system
+      - MONGODB_URI=mongodb://host.docker.internal:27017/comms_system
     ports:
       - "4000:4000"
     depends_on:
