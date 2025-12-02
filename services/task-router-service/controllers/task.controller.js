@@ -50,11 +50,11 @@ const createTask = async (req, res) => {
             spanId,
             level: 'error',
             event: 'ROUTE_FAILED',
-            message: `Routing failed: ${err.message}`,
+            message: `Routing failed: ${error.message}`,
             meta: { taskId: task._id, bodyHash },
         });
 
-        return res.status(500).json({ traceId, status: 'failed', error: err.message });
+        return res.status(500).json({ traceId, status: 'failed', error: error.message });
     }
 }
 
