@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const connectToMongo = require('./src/db/mongo');
-// const router = require('./src/routes/router.route');
+const router = require('./src/routes/logs.route');
 
 const app = express();
 const port = process.env.PORT;
@@ -11,7 +11,7 @@ const port = process.env.PORT;
 app.use(cors());
 app.use(express.json());
 
-// app.use('/task_service', router);
+app.use('/logging_service', router);
 
 app.get('/health', (req, res) => {
     res.json({ status: 'ok', service: process.env.SERVICE_NAME });

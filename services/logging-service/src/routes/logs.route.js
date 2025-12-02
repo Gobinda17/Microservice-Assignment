@@ -3,6 +3,6 @@ const router = express.Router();
 
 const { createLog } = require('../../controllers/log.controller.js');
 
-router.post('/', createLog);
+router.post('/logs', createLog);
 
 module.exports = router;
