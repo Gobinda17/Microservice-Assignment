@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const mongo_uri = process.env.MONGO_URI || 'mongodb://host.docker.internal:27017/comms_system';
+const mongo_uri = process.env.MONGO_URI;
 
 const connectToMongo = async () => {
     try {
