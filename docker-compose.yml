@@ -24,7 +24,7 @@ services:
     container_name: task-router-service
     environment:
       - PORT=3001
-      - SERVICE_NAME=TaskRouterService
+      - SERVICE_NAME=task-router-service
       - LOGGING_SERVICE_URL=http://logging-service:4000/logging_service
       - DELIVERY_SERVICE_URL=http://delivery-service:3002/delivery_service
       - MONGODB_URI=mongodb://host.docker.internal:27017/comms_system
@@ -38,7 +38,7 @@ services:
     container_name: delivery-service
     environment:
       - PORT=3002
-      - SERVICE_NAME=DeliveryService
+      - SERVICE_NAME=delivery-service
       - LOGGING_SERVICE_URL=http://logging-service:4000/logging_service
       - MONGODB_URI=mongodb://host.docker.internal:27017/comms_system
     ports:
@@ -51,7 +51,7 @@ services:
     container_name: logging-service
     environment:
       - PORT=4000
-      - SERVICE_NAME=LoggingService
+      - SERVICE_NAME=logging-service
       - ELASTICSEARCH_URL=http://elasticsearch:9200
       - MONGODB_URI=mongodb://host.docker.internal:27017/comms_system
     ports:
