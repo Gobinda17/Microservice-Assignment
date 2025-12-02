@@ -1,0 +1,69 @@
+{
+  "info": {
+    "name": "Microservice-Assignment - All Routes",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "1.0.0"
+  },
+  "item": [
+    {
+      "name": "Task Router - Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "http://localhost:3001/health", "protocol": "http", "host": ["localhost"], "port": "3001", "path": ["health"] }
+      }
+    },
+    {
+      "name": "Task Router - Create Task",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"taskType\": \"delivery\",\n  \"payload\": {\n    \"recipient\": \"Alice\",\n    \"address\": \"123 Main St\",\n    \"taskId\": \"task-001\"\n  }\n}"
+        },
+        "url": { "raw": "http://localhost:3001/task_service/task", "protocol": "http", "host": ["localhost"], "port": "3001", "path": ["task_service","task"] }
+      }
+    },
+    {
+      "name": "Delivery - Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "http://localhost:3002/health", "protocol": "http", "host": ["localhost"], "port": "3002", "path": ["health"] }
+      }
+    },
+    {
+      "name": "Delivery - Deliver",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"recipient\": \"Alice\",\n  \"address\": \"123 Main St\",\n  \"taskId\": \"task-001\"\n}"
+        },
+        "url": { "raw": "http://localhost:3002/delivery_service/deliver", "protocol": "http", "host": ["localhost"], "port": "3002", "path": ["delivery_service","deliver"] }
+      }
+    },
+    {
+      "name": "Logging - Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "http://localhost:4000/health", "protocol": "http", "host": ["localhost"], "port": "4000", "path": ["health"] }
+      }
+    },
+    {
+      "name": "Logging - Create Log",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"level\": \"info\",\n  \"message\": \"Order routed to delivery\",\n  \"meta\": { \"taskId\": \"task-001\", \"service\": \"task-router\" }\n}"
+        },
+        "url": { "raw": "http://localhost:4000/logging_service/logs", "protocol": "http", "host": ["localhost"], "port": "4000", "path": ["logging_service","logs"] }
+      }
+    }
+  ]
+}
