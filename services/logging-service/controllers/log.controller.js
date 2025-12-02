@@ -1,5 +1,5 @@
-const client = require('../esClinet');
-const Log = require('../models/Log');
+const client = require('../src/esClinet');
+const Log = require('../src/models/Log');
 
 const createLog = async (req, res) => {
     const log = req.body;
