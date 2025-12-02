@@ -1,17 +1,14 @@
 const mongoose = require('mongoose');
+const mongo_uri = process.env.MONGODB_URI || 'mongodb://host.docker.internal:27017/comms_system';
 
 const connectDB = async () => {
-    const uri =
-        process.env.MONGODB_URI || 'mongodb://localhost:27017/comms_system';
-
-    if (mongoose.connection.readyState === 1) return;
-
-    await mongoose.connect(uri, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    });
-
-    console.log('✅ Logging Service connected to MongoDB');
+    try {
+        await mongoose.connect(mongo_uri);
+        console.log('Connected to MongoDB');
+    } catch (error) {
+        console.error('Error connecting to MongoDB:', error);
+        process.exit(1);
+    }
 }
 
 module.exports = connectDB;
