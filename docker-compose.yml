@@ -25,8 +25,8 @@ services:
     environment:
       - PORT=3001
       - SERVICE_NAME=TaskRouterService
-      - LOGGING_SERVICE_URL=http://logging-service:4000
-      - DELIVERY_SERVICE_URL=http://delivery-service:3002
+      - LOGGING_SERVICE_URL=http://logging-service:4000/logging_service
+      - DELIVERY_SERVICE_URL=http://delivery-service:3002/delivery_service
       - MONGODB_URI=mongodb://host.docker.internal:27017/comms_system
     ports:
       - "3001:3001"
@@ -39,7 +39,7 @@ services:
     environment:
       - PORT=3002
       - SERVICE_NAME=DeliveryService
-      - LOGGING_SERVICE_URL=http://logging-service:4000
+      - LOGGING_SERVICE_URL=http://logging-service:4000/logging_service
       - MONGODB_URI=mongodb://host.docker.internal:27017/comms_system
     ports:
       - "3002:3002"
