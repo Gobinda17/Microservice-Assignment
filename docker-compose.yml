@@ -20,7 +20,7 @@ services:
       - elasticsearch
 
   task-router:
-    build: ./services/task-router
+    build: ./services/TaskRouterService
     container_name: task-router
     environment:
       - PORT=3001
@@ -34,7 +34,7 @@ services:
       - logging-service
 
   delivery-service:
-    build: ./services/delivery-service
+    build: ./services/DeliveryService
     container_name: delivery-service
     environment:
       - PORT=3002
@@ -47,7 +47,7 @@ services:
       - logging-service
 
   logging-service:
-    build: ./services/logging-service
+    build: ./services/LoggingService
     container_name: logging-service
     environment:
       - PORT=4000
