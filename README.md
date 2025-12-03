@@ -106,7 +106,7 @@ Alternative — run services individually (dev)
 
 ## Environment variables (per-service examples)
 - Common
-  - MONGODB_URI — Mongo connection used by services (example: mongodb://host.docker.internal:27017/comms_system)
+  - MONGO_URI — Mongo connection used by services (example: mongodb://host.docker.internal:27017/comms_system)
   - PORT — service HTTP port (example: 3001, 3002, 4000)
   - SERVICE_NAME — friendly name for logs
 
@@ -115,19 +115,19 @@ Alternative — run services individually (dev)
   - SERVICE_NAME=task-router-service
   - LOGGING_SERVICE_URL=http://logging-service:4000/logging_service
   - DELIVERY_SERVICE_URL=http://delivery-service:3002/delivery_service
-  - MONGODB_URI=mongodb://host.docker.internal:27017/comms_system
+  - MONGO_URI=mongodb://host.docker.internal:27017/comms_system
 
 - delivery-service (.env)
   - PORT=3002
   - SERVICE_NAME=delivery-service
   - LOGGING_SERVICE_URL=http://logging-service:4000/logging_service
-  - MONGODB_URI=mongodb://host.docker.internal:27017/comms_system
+  - MONGO_URI=mongodb://host.docker.internal:27017/comms_system
 
 - logging-service (.env)
   - PORT=4000
   - SERVICE_NAME=logging-service
   - ELASTICSEARCH_URL=http://host.docker.internal:9200
-  - MONGODB_URI=mongodb://host.docker.internal:27017/comms_system
+  - MONGO_URI=mongodb://host.docker.internal:27017/comms_system
 
 Notes:
 - Do NOT commit real credentials or secrets. Use a .env file (ignored by git) or Docker secrets for production.
